@@ -147,7 +147,7 @@ public final class ReactionButton: UIReactionControl {
     if isSelected {
       UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: .calculationModeCubic, animations: { [weak self] in
         UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
-          self?.iconImageView.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
+          self?.iconImageView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
         })
         UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
           self?.iconImageView.transform = .identity
@@ -241,18 +241,19 @@ public final class ReactionButton: UIReactionControl {
 
     switch config.alignment {
     case .left:
-      selector.center = CGPoint(x: centerPoint.x + (selector.bounds.width - bounds.width) / 2, y: centerPoint.y)
+      selector.center = CGPoint(x: centerPoint.x + (selector.bounds.width - bounds.width) / 2, y: centerPoint.y + 20)
     case .right:
-      selector.center = CGPoint(x: centerPoint.x - (selector.bounds.width - bounds.width) / 2, y: centerPoint.y)
+      selector.center = CGPoint(x: centerPoint.x - (selector.bounds.width - bounds.width) / 2, y: centerPoint.y + 20)
     default:
       selector.center = centerPoint
     }
 
     if selector.frame.origin.x - config.spacing < 0 {
-      selector.center = CGPoint(x: selector.center.x - selector.frame.origin.x + config.spacing, y: centerPoint.y)
+      selector.center = CGPoint(x: selector.center.x - selector.frame.origin.x + config.spacing,
+                                y: centerPoint.y + 20)
     }
     else if selector.frame.origin.x + selector.frame.width + config.spacing > overlay.bounds.width {
-      selector.center = CGPoint(x: selector.center.x - (selector.frame.origin.x + selector.frame.width + config.spacing - overlay.bounds.width), y: centerPoint.y)
+      selector.center = CGPoint(x: selector.center.x - (selector.frame.origin.x + selector.frame.width + config.spacing - overlay.bounds.width), y: centerPoint.y + 20)
     }
 
     selector.feedback = feedback
