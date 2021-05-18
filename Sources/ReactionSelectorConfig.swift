@@ -68,7 +68,7 @@ public final class ReactionSelectorConfig: Configurable {
   final func computedIconSize(highlighted isHighlighted: Bool) -> CGFloat {
     let size = iconSize ?? defaultIconSize
 
-    return isHighlighted ? size - spacing : size
+    return isHighlighted ? (size - spacing / 1.5)  : size + 5
   }
 
   /// Returns the highlighted icon size
@@ -88,7 +88,10 @@ public final class ReactionSelectorConfig: Configurable {
     if let hi = highlightedIndex, index == hi {
       let highlightedSize = computedHighlightedIconSizeInBounds(bounds, reactionCount: reactionCount)
 
-      return CGRect(x: (iconSize + spacing) * fi, y: bounds.height - highlightedSize - spacing, width: highlightedSize, height: highlightedSize)
+      return CGRect(x: (iconSize + spacing) * fi,
+                      y: bounds.height - highlightedSize / 1.5 - spacing,
+                      width: highlightedSize / 1.5,
+                      height: highlightedSize / 1.5)
     }
     else if let hi = highlightedIndex, index > hi {
       let highlightedSize = computedHighlightedIconSizeInBounds(bounds, reactionCount: reactionCount)
