@@ -165,7 +165,7 @@ public final class ReactionSelector: UIReactionControl {
     UIView.animate(withDuration: CATransaction.animationDuration(), delay: 0, options: .curveEaseIn, animations: { [unowned self] in
       label.alpha     = labelAlpha
       label.transform = labelTranform
-      label.center    = CGPoint(x: icon.frame.midX, y: icon.frame.minY - label.bounds.height / 2 - self.config.spacing)
+      label.center    = CGPoint(x: icon.frame.midX, y: icon.frame.minY)
       }, completion: nil)
   }
 
